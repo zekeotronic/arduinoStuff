@@ -3,27 +3,26 @@
 // #include <WiFi101.h>
 // #include <ArduinoHttpClient.h>
 
-char ssid[] = "Deltahouse - 2.4";      //  your network SSID (name)
-char pass[] = "Willow444";   // your network password
-int keyIndex = 0;                 // your network key Index number (needed only for WEP)
+char ssid[] = ""; //  your network SSID (name)
+char pass[] = ""; // your network password
+int keyIndex = 0; // your network key Index number (needed only for WEP)
 char statusCodes[7][20] = {"IDLE", "NO SSID AVAILABLE", "SCAN COMPLETED", "CONNECTED", "CONNECTION FAILED", "CONNECTION LOST", "DISCONNECTED"};
-
 
 int status = WL_IDLE_STATUS;
 WiFiServer server(80);
 
-
-void setup() {
-  Serial.begin(115200);      // initialize serial communication
-  pinMode(5, OUTPUT);      // set the LED pin mode
+void setup()
+{
+  Serial.begin(115200); // initialize serial communication
+  pinMode(5, OUTPUT);   // set the LED pin mode
   WiFi.begin(ssid, pass);
   delay(5000);
-  if (WiFi.status() == 3) {
+  if (WiFi.status() == 3)
+  {
     Serial.print("Connected to ");
     Serial.println(ssid);
     digitalWrite(5, HIGH);
   }
-
 
   // check for the presence of the shield:
   // if (WiFi.status() == WL_NO_SHIELD) {
@@ -50,8 +49,8 @@ void setup() {
   // printWifiStatus();                        // you're connected now, so print out the status
 }
 
-
-void loop() {
+void loop()
+{
   // WiFiClient client = server.available();   // listen for incoming clients
   // Serial.println(statusCodes[WiFi.status()]);
   // delay(1000);
@@ -105,7 +104,8 @@ void loop() {
   delay(10000);
 }
 
-void printWifiStatus() {
+void printWifiStatus()
+{
   // print the SSID of the network you're attached to:
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
